@@ -33,3 +33,8 @@
 
 <img width="949" alt="Screen Shot 2022-11-21 at 6 52 18 AM" src="https://user-images.githubusercontent.com/68655342/203049028-7d74eb33-5dbe-4899-acce-a810280c0b91.png">
 
+#### Potential Stretch Goals:
+  - messaging b/w users
+  - allowing users to upload profile photo
+  
+
