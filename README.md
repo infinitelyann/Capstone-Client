@@ -37,4 +37,6 @@
   - messaging b/w users
   - allowing users to upload profile photo
   
+### Schedule
+<img width="1116" alt="Screen Shot 2022-11-21 at 9 43 44 AM" src="https://user-images.githubusercontent.com/68655342/203083600-99a7b1aa-2762-470e-b8fe-d3cb093c47ae.png">
 
