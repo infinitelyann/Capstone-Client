@@ -39,6 +39,11 @@ const alwaysOptions = (
 				Home
 			</Link>
 		</Nav.Link>
+		<Nav.Link>
+			<Link to='/posts' style={linkStyle}>
+				Posts
+			</Link>
+		</Nav.Link>
 	</>
 )
 
