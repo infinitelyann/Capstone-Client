@@ -7,7 +7,8 @@ import { v4 as uuid } from 'uuid'
 import AutoDismissAlert from './components/shared/AutoDismissAlert/AutoDismissAlert'
 import Header from './components/shared/Header'
 import RequireAuth from './components/shared/RequireAuth'
-import CreatePost from './components/CreatePost'
+import CreateProfile from './components/profiles/CreateProfile'
+import CreatePost from './components/posts/CreatePost'
 import Home from './components/Home'
 import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
@@ -46,6 +47,7 @@ const App = () => {
 				<Header user={user} />
 				<Routes>
 					<Route path='/posts' element={<CreatePost msgAlert={msgAlert} user={user} />}/>
+					<Route path='/profiles' element={<CreateProfile msgAlert={msgAlert} user={user} />}/>
 					<Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
 					<Route
 						path='/sign-up'

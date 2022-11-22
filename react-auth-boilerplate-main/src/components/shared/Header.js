@@ -44,6 +44,11 @@ const alwaysOptions = (
 				Posts
 			</Link>
 		</Nav.Link>
+		<Nav.Link>
+			<Link to='/profiles' style={linkStyle}>
+				Profiles
+			</Link>
+		</Nav.Link>
 	</>
 )
 
