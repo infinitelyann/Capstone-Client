@@ -45,6 +45,11 @@ const alwaysOptions = (
 			</Link>
 		</Nav.Link>
 		<Nav.Link>
+			<Link to='/create' style={linkStyle}>
+				Write
+			</Link>
+		</Nav.Link>
+		<Nav.Link>
 			<Link to='/profiles' style={linkStyle}>
 				Profiles
 			</Link>

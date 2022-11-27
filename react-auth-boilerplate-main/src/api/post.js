@@ -41,7 +41,7 @@ export const postUpdate = (data, user, id) => {
 	})
 }
 
-export const petDelete = (user, id) => {
+export const postDelete = (user, id) => {
 	return axios({
 		method: 'DELETE',
 		url: apiUrl + '/posts/' + id,
