@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom'
 
 import ProfileForm from '../shared/ProfileForm'
 
-const CreateProfile = ({ user, msgAlert }) => {
+const CreateProfile = (props) => {
+    const {user, msgAlert} = props
     const navigate = useNavigate()
 
     const defaultProfile = {
@@ -49,10 +50,11 @@ const CreateProfile = ({ user, msgAlert }) => {
 
     return (
         <ProfileForm
+            user ={user}
             profile={ profile }
             handleChange={ handleChange }
             heading="Add a new profile!"
-            handleSubmit={ handleCreateProfile }
+            handleCreateProfile={ handleCreateProfile }
         />
 	)
 }

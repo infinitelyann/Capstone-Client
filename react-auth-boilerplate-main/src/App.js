@@ -7,7 +7,6 @@ import { v4 as uuid } from "uuid";
 import AutoDismissAlert from "./components/shared/AutoDismissAlert/AutoDismissAlert";
 import Header from "./components/shared/Header";
 import RequireAuth from "./components/shared/RequireAuth";
-import CreateProfile from "./components/profiles/CreateProfile";
 import Home from "./components/Home";
 import SignUp from "./components/auth/SignUp";
 import SignIn from "./components/auth/SignIn";
@@ -17,6 +16,9 @@ import AvatarUpload from "./imageUpload";
 import PostIndex from "./components/posts/PostIndex";
 import PostCreate from "./components/posts/PostCreate";
 import PostShow from "./components/posts/PostShow";
+import CreateProfile from "./components/profiles/CreateProfile";
+import ShowProfile from "./components/profiles/ShowProfile";
+import IndexProfile from "./components/profiles/IndexProfile";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -59,9 +61,16 @@ const App = () => {
           element={<PostShow msgAlert={msgAlert} user={user} />}
         />
 
-        {/* <Route path='/upload' element={<AvatarUpload msgAlert={msgAlert} user={user} />}/> */}
         <Route
           path="/profiles"
+          element={<IndexProfile msgAlert={msgAlert} user={user} />}
+        />
+        <Route
+          path="/profiles/:id"
+          element={<ShowProfile msgAlert={msgAlert} user={user} />}
+        />
+         <Route
+          path="/editprofile"
           element={<CreateProfile msgAlert={msgAlert} user={user} />}
         />
         <Route path="/" element={<Home msgAlert={msgAlert} user={user} />} />

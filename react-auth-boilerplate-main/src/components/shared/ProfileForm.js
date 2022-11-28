@@ -4,6 +4,7 @@ import AvatarUpload from '../../../src/imageUpload'
 import axios from "axios";
 
 const ProfileForm = (props) =>{
+    const { profile, handleChange, heading, handleCreateProfile, user } = props
   const [logo, setLogo] = useState('')
   const [imageUpload,] = useState({})
     const[, setImg] = useState({})
@@ -33,32 +34,22 @@ const ProfileForm = (props) =>{
         await profileUpload(logo)
     }
 
-// const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/lagos/image/upload';
-// const CLOUDINARY_UPLOAD_PRESET = 'fbswcnss';
-// const image = document.querySelector('#fileupload');
-// image.addEventListener('change', (e) => {
-//   const file = e.target.files[0];
-//   const formData = new FormData();
-//   formData.append('file', file);
-//   formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
-
-//   fetch(CLOUDINARY_URL, {
-//     method: 'POST',
-//     body: formData,
-//   })
-//     .then(response => response.json())
-//     .then((data) => {
-//       if (data.secure_url !== '') {
-//         const uploadedFileUrl = data.secure_url;
-//         localStorage.setItem('passportUrl', uploadedFileUrl);
-//       }
-//     })
-//     .catch(err => console.error(err));
-// });
+    
     return(
         <>
+        <Form>
         <AvatarUpload imageUpload={handleImg} image={imageUpload.image} />
-        <button className="btn btn-outline-dark" onClick={(e) => handleSubmit(e)}></button>
+        <input
+        placeholder="bio?"
+        name="bio"
+        id="bio"
+        value={ profile.bio }
+
+        className="btn btn-outline-dark" 
+        // onClick={(e) => handleSubmit(e)}
+        ></input>
+
+        </Form>
 
         </>
     )
