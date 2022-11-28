@@ -195,6 +195,10 @@ const PostShow = ({ user, msgAlert}) =>{
 						// handleUpdatePost={handleUpdatePost}
 					/>
 				)}
+                { 
+                    post.owner && user && post.owner_id === user._id
+                    ?
+                    <>
                     <ExpandLessIcon style={{float: "right"}}/>
                     <ExpandMoreIcon style={{float: "right"}}/>
                     <button className="btn btn-outline-dark" onClick={toggleShowUpdate}>Update</button>
@@ -208,6 +212,11 @@ const PostShow = ({ user, msgAlert}) =>{
                    
                    
                     <button onClick={handleDeletePost}className="btn btn-outline-dark" >Delete</button>
+                    </>
+                    :
+                    null
+
+                }
                 </Card.Footer>
          
                 </Card>
