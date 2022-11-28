@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { postIndex } from '../../api/post'
 import LoadingScreen from '../shared/LoadingScreen'
-import PostCreate from './PostCreate'
+
 
 const cardContainerLayout = {
     display: 'flex',
@@ -19,7 +19,6 @@ const PostIndex = ({ user, msgAlert }) => {
         postIndex(user)
         .then(res => {
             setAllPosts(res.data.posts)
-            console.log(allPosts)
         })
         .catch((error) => {
             msgAlert({
@@ -31,15 +30,14 @@ const PostIndex = ({ user, msgAlert }) => {
     }, [])
 
     const postCards = allPosts.map(post => (
-        <Card key={ post.id } style={{ width: '30%', margin: 5 }}>
+        <Card key={ post._id } style={{ width: '30%', margin: 5 }}>
             <Card.Header>{ post.title }</Card.Header>
-            <h1>{ post }</h1>
-            <h2>hey man</h2>
-            {/* <Card.Body>
+            <Card.Body>
+                { post.text }
                 <Card.Text>
-                    <Link to={ `/posts/${post.id}` }>View { post.title }</Link>
+                    <Link to={ `/posts/${post._id}` }>View { post.title }</Link>
                 </Card.Text>
-            </Card.Body> */}
+            </Card.Body>
         </Card>
     ))
 

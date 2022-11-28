@@ -10,18 +10,18 @@ const PostForm = (props) => {
             <Form > 
                 <Form.Label>Title:</Form.Label>
                 <Form.Control   
-                   
-                    name="title"
-                    id="title"
-                    defaultValue = { post.title }
-                    onChange={ handleChange }
+                      placeholder="title?"
+                      name="title"
+                      id="title"
+                      value= { post.title }
+                      onChange={ handleChange }
                 />
                 <Form.Label>Text:</Form.Label>
                 <Form.Control 
-                    
+                    placeholder='text?'
                     name="text"
                     id="text"
-                    defaultValue = { post.text }
+                    value = { post.text }
                     onChange={ handleChange }
                 />
                 <Button onClick={ handleCreatePost }type="submit">Submit</Button>

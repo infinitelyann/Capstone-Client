@@ -7,18 +7,25 @@ import PostForm from '../shared/PostForm'
 const PostCreate = ({ user, msgAlert }) => {
     const navigate = useNavigate()
 
-    // const defaultPost = {
-    //     title: '',
-    //     text: ''
-    // }
+    const defaultPost = {
+        title: '',
+        text: ''
+    }
 
-    const [post, setPost] = useState()
+    const [post, setPost] = useState(defaultPost)
 
 
-    const handleChange = (event) => {
+
+    const handleChange = (e) => {
     //  console.log("hello from handleChange", post.title)
-        setPost(event.target.value)
-            console.log("hello from setPost", post)
+        setPost(prevPost => {
+             const updatedName = e.target.name
+            let updatedValue = e.target.value
+
+            const updatedPost = { [updatedName]: updatedValue }
+
+            return { ...prevPost, ...updatedPost }
+        })
     }
     
     const handleCreatePost = (e) => {
@@ -42,9 +49,9 @@ const PostCreate = ({ user, msgAlert }) => {
                 message: 'Create Post Failure' + error,
                 variant: 'danger'
             })
+            
         })
         
-        console.log("hello from post", post)
     }
 
     return (
