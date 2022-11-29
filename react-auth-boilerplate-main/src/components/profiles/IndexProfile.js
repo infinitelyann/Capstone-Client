@@ -38,7 +38,7 @@ const IndexProfile = (props) =>{
     return(
         <div>
             <div className="container-md">
-                {userCards}
+                <ShowProfile user={user}/>
             </div>
         </div>
     )

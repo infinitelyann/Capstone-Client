@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { postCreate } from '../../api/post'
 import { useNavigate } from 'react-router-dom'
 
-import PostForm from '../shared/PostForm'
+import PostForm from '../shared/forms/PostForm'
 
 const PostCreate = ({ user, msgAlert }) => {
     const navigate = useNavigate()

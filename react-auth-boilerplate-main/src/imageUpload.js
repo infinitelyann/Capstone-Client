@@ -3,9 +3,11 @@ import { Avatar, Button } from '@material-ui/core'
 import DeleteIcon from '@mui/icons-material/Delete'
 import UploadIcon from '@mui/icons-material/Upload'
 import { spacing } from '@material-ui/system'
+import { imageCreate } from './api/img'
 
 
-const AvatarUpload = (props) =>{
+const ProfilePicUpload = (props) =>{
+    const { user, profile, handleSubmit } = props
     
     const [image, _setImage] = useState()
     const inputFileRef = createRef()
@@ -26,9 +28,10 @@ const AvatarUpload = (props) =>{
             setImage(URL.createObjectURL(newImage))
         }
         props.imageUpload(event)
-        console.log(newImage+ "hello")
+        console.log(newImage, "hello")
+        console.log(user.img)
     }
- 
+    
     return(
       <div>
           <Avatar
@@ -37,6 +40,8 @@ const AvatarUpload = (props) =>{
           style={{ width: "110px", borderRadius: "50%", height: "100px"}}
           />
         <input
+        name="img"
+        // value={user.img }
         ref={inputFileRef}
         accept="image/*"
         hidden
@@ -49,13 +54,14 @@ const AvatarUpload = (props) =>{
             className='btn btn-outline-dark'
             component="span"
             >
-                {image ? <DeleteIcon mr={2}/> : <UploadIcon mr={2}/>}
+                
                 {image ? 'Uploaded' : 'Upload'}
             </Button>
+            <Button onClick={handleSubmit}>post</Button>
         </label>
       
 
       </div>
     )
 }
-export default AvatarUpload
+export default ProfilePicUpload

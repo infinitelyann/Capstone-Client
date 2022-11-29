@@ -1,3 +1,4 @@
+import { padding } from '@mui/system'
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
@@ -8,6 +9,7 @@ const linkStyle = {
 }
 const authenticatedOptions = (
 	<>
+	
 		<Nav.Item>
 			<Link to='change-password' style={linkStyle}>
 				Change Password
@@ -18,55 +20,69 @@ const authenticatedOptions = (
 				Sign Out
 			</Link>
 		</Nav.Item>
+		<Nav.Item>
+			<Link to='/create' style={linkStyle}>
+				Write
+			</Link>
+		</Nav.Item>
+		<Nav.Item>
+			<Link to='/profiles' style={linkStyle}>
+				Profiles
+			</Link>
+		</Nav.Item>
+	
 	</>
 )
 
 const unauthenticatedOptions = (
 	<>
+	
         <Nav.Item>
 		    <Link to='sign-up' style={linkStyle}>Sign Up</Link>
         </Nav.Item>
         <Nav.Item>
 		    <Link to='sign-in' style={linkStyle}>Sign In</Link>
         </Nav.Item>
+
+
+
 	</>
 )
 
 const alwaysOptions = (
 	<>
-		<Nav.Link>
+	
+
+		<Nav.Item>
 			<Link to='/' style={linkStyle}>
 				Home
 			</Link>
-		</Nav.Link>
-		<Nav.Link>
+		</Nav.Item>
+		<Nav.Item>
 			<Link to='/posts' style={linkStyle}>
 				Posts
 			</Link>
-		</Nav.Link>
-		<Nav.Link>
-			<Link to='/create' style={linkStyle}>
-				Write
-			</Link>
-		</Nav.Link>
-		<Nav.Link>
-			<Link to='/profiles' style={linkStyle}>
-				Profiles
-			</Link>
-		</Nav.Link>
+		</Nav.Item>
+
+		
 	</>
 )
 
 const Header = ({ user }) => (
-	<Navbar bg='primary' variant='dark' expand='md'>
+	<Navbar className=' nav flex-column' bg='primary' variant='dark' expand='md' style=
+	{{float: "left", 
+	// marginTop: "10px",
+	// marginLeft: "10px",
+	// padding: "auto"
+	}}>
 		<Navbar.Brand>
-            <Link to='/' style={linkStyle}>
-                Capstone-Client
+            <Link to='/' style={linkStyle} id='name-title'>
+                blogr
             </Link>
         </Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
 		<Navbar.Collapse id='basic-navbar-nav'>
-			<Nav className='ml-auto'>
+			<Nav className='ml-auto flex-column'>
 				{user && (
 					<span className='navbar-text mr-2'>Welcome, {user.email}</span>
 				)}

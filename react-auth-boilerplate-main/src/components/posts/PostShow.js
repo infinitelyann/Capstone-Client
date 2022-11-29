@@ -6,6 +6,7 @@ import LoadingScreen from '../shared/LoadingScreen'
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CreateComment from '../comment/CreateComment'
+import ShowComment from '../comment/ShowComment'
 import PostUpdate from './PostUdpate'
 
 const cardContainerLayout = {
@@ -15,84 +16,15 @@ const cardContainerLayout = {
 }
 
 const PostShow = ({ user, msgAlert}) =>{
-    // const [post, setPost] = useState(null)
-    // const [isUpdateShown, setIsUpdateShown] = useState(false)
-    // const [deleted, setDeleted] = useState(false)
-    // const [updated, setUpdated] = useState(false)
-    
-    // const { id } = useParams()
-    // const navigate = useNavigate()
-
-    // useEffect(() => {
-    //     postShow(user, id)
-    //         .then((res) => {
-    //             setPost(res.data.post)
-    //         })
-    //         .catch((error) => {
-    //             msgAlert({
-    //                 heading: 'Failure',
-    //                 message: 'Show Post Failure' + error,
-    //                 variant: 'danger'
-    //             })
-    //         })
-    // }, [updated])
-
-    // // const handleCommentClick = () =>{
-    // //     return(
-    // //         <CreateComment/>
-    // //     )
-    // // }
-    // // const handleUpdate = () =>{
-    // //     return(
-    // //         <PostUpdate post={post}/>
-    // //     )
-
-    // // }
-
-    // const handleUpdatePost = () => {
-    //     postUpdate(post, user, id)
-    //     .then(() => {
-    //         msgAlert({
-    //             heading: 'Success',
-    //             message: 'Updating Post',
-    //             variant: 'success'
-    //         })
-    //     })
-    //     .catch((error) => {
-    //         msgAlert({
-    //             heading: 'Failure',
-    //             message: 'Update Postt Failure' + error,
-    //             variant: 'danger'
-    //         })
-    //     })
-    // }
-    
-
-    // const handleDeletePost = () => {
-    //     postDelete(user, id)
-    //     .then(() => {
-    //         setDeleted(true)
-    //         msgAlert({
-    //             heading: 'Success',
-    //             message: 'Deleting a Post',
-    //             variant: 'success'
-    //         })
-            
-    //     })
-    //     .catch((error) => {
-    //         msgAlert({
-    //             heading: 'Failure',
-    //             message: 'Deleting a Post Failure' + error,
-    //             variant: 'danger'
-    //         })
-    //     })
-    // }
+  
 
     const [post, setPost] = useState({})
     const [isUpdateShown, setIsUpdateShown] = useState(false)
+    const [commentShow, setCommentShow] = useState(false)
     const [comment, setComment] = useState(null)
     const [deleted, setDeleted] = useState(false)
     const [owner, setOwner] = useState(null)
+    const [updated, setUpdated] = useState(false)
 
     const { id } = useParams()
     const navigate = useNavigate()
@@ -124,9 +56,7 @@ const PostShow = ({ user, msgAlert}) =>{
     }
 
     const handleChange = (event) => {
-        // to keep the values as users input info 
-        // first spread the current post
-        // then comma and modify the key to the value you need
+    
         setPost({...post, [event.target.name]: event.target.value})
     }
 
@@ -187,21 +117,28 @@ const PostShow = ({ user, msgAlert}) =>{
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer>
+                    {user &&
+                    
                     <small onClick={toggleShowComment} className="btn btn-outline-dark" >comment</small>
+                    } 
+                    
                     {comment && (
 					<CreateComment
-						post={post}
-						// handleChange={handleChange}
-						// handleUpdatePost={handleUpdatePost}
+                    user={user}
+                    post={post}
+                    show={commentShow}
+                    msgAlert={msgAlert}
+                    triggerRefresh={() => setComment(prev => !prev)}
+                    handleClose={() => setCommentShow(false)}
 					/>
 				)}
+                    <ExpandLessIcon style={{float: "right"}}/>
+                    <ExpandMoreIcon style={{float: "right"}}/>
                 { 
                     post.owner && user && post.owner_id === user._id
                     ?
                     <>
-                    <ExpandLessIcon style={{float: "right"}}/>
-                    <ExpandMoreIcon style={{float: "right"}}/>
-                    <button className="btn btn-outline-dark" onClick={toggleShowUpdate}>Update</button>
+                    <button className="btn btn-outline-dark" onClick={toggleShowUpdate}>update</button>
 				{isUpdateShown && (
 					<PostUpdate
 						post={post}
@@ -211,7 +148,7 @@ const PostShow = ({ user, msgAlert}) =>{
 				)}
                    
                    
-                    <button onClick={handleDeletePost}className="btn btn-outline-dark" >Delete</button>
+                    <button onClick={handleDeletePost}className="btn btn-outline-dark" >delete</button>
                     </>
                     :
                     null
@@ -220,6 +157,18 @@ const PostShow = ({ user, msgAlert}) =>{
                 </Card.Footer>
          
                 </Card>
+                
+                
+
+                    <ShowComment
+                    key={comment}
+                    msgAlert={msgAlert}
+                    user={user}
+                    post={post}
+                    comment={comment}
+                    triggerRefresh={() => setUpdated(prev => !prev)}/>
+            
+                
             </Container>
     )
 }
