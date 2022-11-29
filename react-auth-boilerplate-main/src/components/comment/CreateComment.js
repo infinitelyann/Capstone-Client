@@ -44,6 +44,7 @@ const CreateComment = (props) => {
                     variant: 'danger'
                 })
             })
+            console.log('from create comment', post)
     }
     if(user){
         return (

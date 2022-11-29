@@ -111,9 +111,11 @@ const PostShow = ({ user, msgAlert}) =>{
                 <Card.Body>
                    {post.text}
                     <Card.Text>
-                       
-                       
-                     
+                       {/* {comment &&
+
+                        {comment}
+                       }
+                      */}
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer>

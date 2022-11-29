@@ -4,11 +4,14 @@ import axios from 'axios'
 // CREATE
 export const createComment = (user, postId, newComment) => {
     console.log('the user in createComment', user)
-    console.log('the newComment in createComment', newComment, postId)
+    console.log('the newComment in createComment', newComment)
 	return axios({
 		url: `${apiUrl}/comments/${postId}`,
 		method: 'POST',
-		data: { comment: newComment }
+		data: { comment: newComment },
+		headers: {
+			Authorization: `Token token=${user.token}`,
+		},
 	})
 }
 
