@@ -42,16 +42,17 @@ const PostShow = ({ user, msgAlert}) =>{
                 variant: 'danger'
             })
         })
+        
     }, [])
 
     const toggleShowUpdate = (e) => {
         setIsUpdateShown(prevUpdateShown => !prevUpdateShown)
-        e.target.style.display = "none"
+        
         
     }
     const toggleShowComment = (e) => {
         setComment(prevComment => !prevComment)
-        e.target.style.display = "none"
+       
         
     }
 
@@ -137,8 +138,9 @@ const PostShow = ({ user, msgAlert}) =>{
                     <ExpandLessIcon style={{float: "right"}}/>
                     <ExpandMoreIcon style={{float: "right"}}/>
                 { 
-                    post.owner && user && post.owner_id === user._id
+                     owner === user.email
                     ?
+                    
                     <>
                     <button className="btn btn-outline-dark" onClick={toggleShowUpdate}>update</button>
 				{isUpdateShown && (
@@ -163,7 +165,7 @@ const PostShow = ({ user, msgAlert}) =>{
                 
 
                     <ShowComment
-                    key={comment}
+                    
                     msgAlert={msgAlert}
                     user={user}
                     post={post}

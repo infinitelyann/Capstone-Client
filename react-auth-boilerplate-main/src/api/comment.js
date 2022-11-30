@@ -8,7 +8,7 @@ export const createComment = (user, postId, newComment) => {
 	return axios({
 		url: `${apiUrl}/comments/${postId}`,
 		method: 'POST',
-		data: { comment: newComment },
+		data: { comments: newComment },
 		headers: {
 			Authorization: `Token token=${user.token}`,
 		},

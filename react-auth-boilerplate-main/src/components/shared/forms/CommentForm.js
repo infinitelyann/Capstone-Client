@@ -9,7 +9,7 @@ const { post, comment, handleChange, handleSubmit } = props
         <Form onSubmit={handleSubmit}>
         <input 
             type='text' 
-            value={comment.text} 
+            value={post.comments.text} 
             name='text' 
             onChange={handleChange} 
             />

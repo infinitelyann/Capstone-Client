@@ -9,7 +9,8 @@ const PostCreate = ({ user, msgAlert }) => {
 
     const defaultPost = {
         title: '',
-        text: ''
+        text: '',
+        owner: user
     }
 
     const [post, setPost] = useState(defaultPost)
@@ -51,6 +52,7 @@ const PostCreate = ({ user, msgAlert }) => {
             })
             
         })
+        console.log(post)
         
     }
 

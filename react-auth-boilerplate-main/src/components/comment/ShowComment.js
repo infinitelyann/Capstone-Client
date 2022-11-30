@@ -36,7 +36,7 @@ const ShowComment = (props) =>{
             <>
             <h1>
 
-                { post.comment.text }
+                { post.comments }
             </h1>
             </>
     )
