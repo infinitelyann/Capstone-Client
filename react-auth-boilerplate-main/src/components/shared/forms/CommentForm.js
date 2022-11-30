@@ -3,17 +3,21 @@ import { Form, Button } from "react-bootstrap";
 import { createComment } from "../../../api/comment";
 
 const CommentForm = (props) =>{
-const { post, comment, handleChange, handleSubmit } = props
+const {post, comment, handleChange, handleSubmit } = props
     return(
        <>
-        <Form onSubmit={handleSubmit}>
-        <input 
-            type='text' 
-            value={post.comments.text} 
+        <Form >
+        <Form.Control
+            placeholder="text?"
             name='text' 
+            id="text"
+            value={post.comments.text} 
             onChange={handleChange} 
-            />
-            <Button type="submit">Submit</Button>
+        >
+
+        </Form.Control>
+            
+            <Button onClick={handleSubmit} type="submit">Submit</Button>
         </Form>
        </>
     )

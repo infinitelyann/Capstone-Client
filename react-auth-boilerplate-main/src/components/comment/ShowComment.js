@@ -26,17 +26,17 @@ const ShowComment = (props) =>{
    
 
     if(!comment){
-        return(
+        return
             <>no comments yet</>
             
-        )
+        
 
     }
     return(
             <>
             <h1>
 
-                { post.comments }
+                { post.comments[1].text }
             </h1>
             </>
     )

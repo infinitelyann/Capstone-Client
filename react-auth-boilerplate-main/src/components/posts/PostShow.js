@@ -33,7 +33,7 @@ const PostShow = ({ user, msgAlert}) =>{
         postShow(user, id)
         .then((res) => {
             setPost(res.data.post)
-            setOwner(res.data.post.owner.email)
+            
         })
         .catch((error) => {
             msgAlert({
@@ -42,8 +42,9 @@ const PostShow = ({ user, msgAlert}) =>{
                 variant: 'danger'
             })
         })
+        console.log(post)
         
-    }, [])
+    }, [updated])
 
     const toggleShowUpdate = (e) => {
         setIsUpdateShown(prevUpdateShown => !prevUpdateShown)
@@ -101,13 +102,14 @@ const PostShow = ({ user, msgAlert}) =>{
 
 
     if (deleted) navigate('/posts')
+
     if(!post){
         return <LoadingScreen/>
     }
     return(
         <Container className="fluid">
                 <Card>
-                {owner}
+                {/* {post.owner.email} */}
                 <Card.Header>{post.title}</Card.Header>
                 <Card.Body>
                    {post.text}
@@ -143,7 +145,7 @@ const PostShow = ({ user, msgAlert}) =>{
                     <ExpandMoreIcon style={{float: "right"}}/>
                     
                     
-                   {user.email === owner ?
+                   {user === post.owner ?
                     <div>
                     <button className="btn btn-outline-dark" onClick={toggleShowUpdate}>update</button>
 				{isUpdateShown && (
@@ -171,14 +173,14 @@ const PostShow = ({ user, msgAlert}) =>{
                 </Card>
                 
                 
-                {comment}
-                    <ShowComment
+                
+                     <ShowComment
                     
                     msgAlert={msgAlert}
                     user={user}
                     post={post}
-                    comment={comment}
-                    triggerRefresh={() => setUpdated(prev => !prev)}/>
+                    comment={post.comments}
+                    triggerRefresh={() => setUpdated(prev => !prev)}/> 
             
                 
             </Container>

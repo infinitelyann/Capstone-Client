@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import ProfilePicUpload from '../../../src/imageUpload'
 import axios from "axios";
 
@@ -40,15 +40,16 @@ const ProfileForm = (props) =>{
         <Form>
         <ProfilePicUpload  imageUpload={handleImg} image={imageUpload.image} user={user} handleSubmit={handleSubmit} />
         <input
+        type="text"
         placeholder="bio?"
         name="bio"
         id="bio"
         value={ profile.bio }
 
-        className="btn btn-outline-dark" 
-        onClick={(e) => handleSubmit(e)}
+       
         ></input>
-
+    <Button className="btn btn-outline-dark" 
+        onClick={(e) => handleSubmit(e)}>submit</Button>
         </Form>
 
         </>

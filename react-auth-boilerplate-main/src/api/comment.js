@@ -3,16 +3,19 @@ import axios from 'axios'
 
 // CREATE
 export const createComment = (user, postId, newComment) => {
-    console.log('the user in createComment', user)
-    console.log('the newComment in createComment', newComment)
+    // console.log('the user in createComment', user)
+	// console.log('the post id', postId)
+    // console.log('the newComment in createComment', newComment)
+	
 	return axios({
 		url: `${apiUrl}/comments/${postId}`,
 		method: 'POST',
-		data: { comments: newComment },
-		headers: {
-			Authorization: `Token token=${user.token}`,
-		},
+		data: { comment: newComment },
+		// headers: {
+		// 	Authorization: `Token token=${user.token}`,
+		// },
 	})
+
 }
 
 // UPDATE comment
@@ -24,7 +27,7 @@ export const updateComment = (user, postId, updatedComment) => {
 		headers: {
 			Authorization: `Token token=${user.token}`,
 		},
-		data: { comment: updatedComment }
+		data: { comments: updatedComment }
 	})
 }
 
