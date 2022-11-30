@@ -120,10 +120,14 @@ const PostShow = ({ user, msgAlert}) =>{
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer>
-                    {user &&
+                    {!user 
+                    ?
                     
+                    <>log in to comment and post</>
+                    : 
+                    <>
                     <small onClick={toggleShowComment} className="btn btn-outline-dark" >comment</small>
-                    } 
+                    
                     
                     {comment && (
 					<CreateComment
@@ -137,11 +141,10 @@ const PostShow = ({ user, msgAlert}) =>{
 				)}
                     <ExpandLessIcon style={{float: "right"}}/>
                     <ExpandMoreIcon style={{float: "right"}}/>
-                { 
-                     owner === user.email
-                    ?
                     
-                    <>
+                    
+                   {user.email === owner ?
+                    <div>
                     <button className="btn btn-outline-dark" onClick={toggleShowUpdate}>update</button>
 				{isUpdateShown && (
 					<PostUpdate
@@ -153,17 +156,22 @@ const PostShow = ({ user, msgAlert}) =>{
                    
                    
                     <button onClick={handleDeletePost}className="btn btn-outline-dark" >delete</button>
-                    </>
+                    </div>
                     :
                     null
-
                 }
+                    </>
+
+                    
+                }
+                
+              
                 </Card.Footer>
          
                 </Card>
                 
                 
-
+                {comment}
                     <ShowComment
                     
                     msgAlert={msgAlert}
