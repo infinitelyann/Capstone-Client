@@ -1,4 +1,6 @@
-# Blog-Style Social Media FrontEnd
+Blogr
+<hr>
+##Blog-Style Social Media FrontEnd
 
 ## Technologies Used
 - ReactJs
