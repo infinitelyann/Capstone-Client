@@ -17,6 +17,7 @@
      - Fonts
      - Colors
  - Allow Edit Comment
+ - Incorporate likes/dislikes
 
 ## Technologies Used
 - ReactJs
