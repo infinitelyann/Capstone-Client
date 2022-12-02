@@ -4,7 +4,19 @@
 - ReactJs
 - CSS3
 - Bootstrap
+- Material-UI
+- Cloundinary
  <hr>
+ 
+ ### Installation Instructions: 
+      - npm install cloudinary
+      - npm install @mui/material @emotion/react @emotion/styled
+      - npm install image-upload
+      - npm install @fontsource/roboto
+      - npm install @mui/icons-material
+
+
+   
 
  ### As a user, I want to be able to...
     - sign-in/sign-up for application
@@ -22,6 +34,14 @@
             - edit/delete comment
     - look at different 'tags' other people have used, and browse posts w/ that tag
 <hr>
+
+## Post-Submission Edits
+ - Figure Out Cloudinary
+ - Finsh User Profile
+ - Create Themes 
+     - Fonts
+     - Colors
+ - Allow Edit Comment
 
 ## Wireframes
 
