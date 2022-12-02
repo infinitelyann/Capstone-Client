@@ -18,7 +18,6 @@ const PostCreate = ({ user, msgAlert }) => {
 
 
     const handleChange = (e) => {
-    //  console.log("hello from handleChange", post.title)
         setPost(prevPost => {
              const updatedName = e.target.name
             let updatedValue = e.target.value
@@ -30,7 +29,7 @@ const PostCreate = ({ user, msgAlert }) => {
     }
     
     const handleCreatePost = (e) => {
-        // console.log("hello from handleCreatePost")
+
         
         e.preventDefault()
         
@@ -52,7 +51,7 @@ const PostCreate = ({ user, msgAlert }) => {
             })
             
         })
-        console.log(post)
+    
         
     }
 

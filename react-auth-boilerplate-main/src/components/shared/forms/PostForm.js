@@ -2,7 +2,7 @@ import { Form, Button, Container } from 'react-bootstrap'
 
 const PostForm = (props) => {
     // here are the props we're going to bring into our form
-    const { post, handleChange, heading, handleCreatePost } = props
+    const { post, handleChange, handleCreatePost } = props
 
     return (
         <Container className="justify-content-center">

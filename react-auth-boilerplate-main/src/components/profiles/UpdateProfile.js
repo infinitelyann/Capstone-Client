@@ -14,12 +14,7 @@ const UpdateProfile = (props)=>{
             id="bio"
             onChange={handleChange} 
             ></Form.Control>
-		     {/* <input 
-            type='text' 
-            value={post.text} 
-            name='text' 
-            onChange={handleChange} 
-            /> */}
+		  
 
 			<button onClick={handleUpdateProfile} className="btn btn-outline-dark">submit</button>
 

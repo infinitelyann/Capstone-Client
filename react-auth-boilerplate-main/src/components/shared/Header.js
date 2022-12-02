@@ -77,10 +77,12 @@ const alwaysOptions = (
 	const classes = useStyles();
   
 	return (
-	  <AppBar position="static">
+		<>
+		<style>{'body{background-color: #F3EFE0}'}</style>
+	  <AppBar style={{backgroundColor: '#434242'}} position="static">
 		<CssBaseline />
 		<Toolbar>
-		  <Typography variant="h4" className={classes.logo}>
+		  <Typography variant="h4" className={classes.logo} style={{color: '#22A39F'}}>
 			blogr
 		  </Typography>
 			<div className={classes.navlinks}>
@@ -93,6 +95,7 @@ const alwaysOptions = (
 			</div>
 		</Toolbar>
 	  </AppBar>
+		</>
 	);
   }
   

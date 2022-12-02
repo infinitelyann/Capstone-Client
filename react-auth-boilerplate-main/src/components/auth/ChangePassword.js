@@ -25,7 +25,6 @@ const ChangePassword = (props) => {
 		event.preventDefault()
 
 		const { msgAlert, user } = props
-        // console.log('the user', user)
         
 
         const passwords = {oldPassword, newPassword}
@@ -79,7 +78,7 @@ const ChangePassword = (props) => {
                             onChange={e => setNewPassword(e.target.value)}
                         />
                     </Form.Group>
-                    <Button variant='primary' type='submit'>
+                    <Button style={{backgroundColor:"#22A39F"}} variant='primary' type='submit'>
                         Submit
                     </Button>
                 </Form>

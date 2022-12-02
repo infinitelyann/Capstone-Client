@@ -4,7 +4,7 @@ import ProfilePicUpload from '../../../src/imageUpload'
 import axios from "axios";
 
 const ProfileForm = (props) =>{
-    const { profile, handleChange, heading, handleCreateProfile, user } = props
+    const { profile, handleChange, handleCreateProfile, user } = props
   const [logo, setLogo] = useState('')
   const [imageUpload,] = useState({})
     const[, setImg] = useState({})

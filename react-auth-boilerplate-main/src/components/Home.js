@@ -1,17 +1,20 @@
+import { Avatar } from "@mui/material";
 import React from "react";
+import { Container } from "react-bootstrap";
 import PostIndex from "./posts/PostIndex";
-import Header from "./shared/Header";
+
 const Home = (props) => {
   const { msgAlert, user } = props;
-  console.log("props in home", props);
 
   return (
     <>
       <div className="container-fluid">
-        
-        {/* {user && */}
+        {user ? (
+          <Container>
+            <Avatar /> hello {user.email}
+          </Container>
+        ) : null}
         <PostIndex msgAlert={msgAlert} />
-        
       </div>
     </>
   );

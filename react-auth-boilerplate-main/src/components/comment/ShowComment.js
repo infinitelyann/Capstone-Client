@@ -1,13 +1,13 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
-import { deleteComment } from "../../api/comment";
+import { deleteComment, updateComment } from "../../api/comment";
+import { Avatar } from "@mui/material";
 
 const ShowComment = (props) =>{
-    const { comment, post, user, msgAlert, triggerRefresh} = props
+    const { comment, post, user, msgAlert, triggerRefresh, commentOwner} = props
 
     const destroyComment = () => {
-        console.log(comment)
-        console.log(post)
+     
         deleteComment(user, post._id, comment._id)
             .then(() => {
                 msgAlert({
@@ -31,10 +31,12 @@ const ShowComment = (props) =>{
    return(
 
            <Card>
-               <Card.Header>{ comment._id }{ comment.owner.email }</Card.Header>
+            <Avatar/>
+               <Card.Header>{ commentOwner }</Card.Header>
                
                 <Card.Body>
                     <small>{ comment.text }</small><br/>
+                    <small></small>
                    
                     <Button onClick={() => destroyComment()}>delete</Button>
                     

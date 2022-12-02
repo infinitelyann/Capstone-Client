@@ -1,16 +1,17 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-export const profileCreate = (data, user) => {
+export const profileCreate = (user, userId, newProfile ) => {
 	return axios({
 		method: 'POST',
-		url: apiUrl + '/profiles',
+		url: `${apiUrl}/profiles/${userId}`,
 		data: {
-			profile: data,
+			profile: newProfile,
 		},
-		// headers: {
-		// 	Authorization: `Token token=${user.token}`,
-		// },
+		eaders: {
+			Authorization: `Token token=${user.token}`,
+		},
+		
 	})
 }
 
@@ -29,7 +30,6 @@ export const profileShow = (user, id) => {
 }
 
 export const profileUpdate = (user, userId, updatedProfile) => {
-    console.log('this is updatedProfile', updatedProfile)
 	return axios({
 		url: `${apiUrl}/profiles/${userId}/${updatedProfile._id}`,
 		method: 'PATCH',

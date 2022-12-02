@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
-// import { Modal } from 'react-bootstrap'
 import CommentForm from '../shared/forms/CommentForm'
 import { createComment } from '../../api/comment'
-import { useNavigate } from 'react-router-dom'
+
 
 const CreateComment = (props) => {
     const { 
-        user, post, show, handleClose, msgAlert, triggerRefresh
+        user, post,  handleClose, msgAlert, triggerRefresh
     } = props
-    const navigate = useNavigate()
+  
     const [commentOwner, setCommentOwner] = useState('')
 
     const defaultComment = {
@@ -56,7 +55,7 @@ const CreateComment = (props) => {
                 variant: 'danger'
             })
         })
-        console.log(comment)
+       
     }
     if(user){
         return (

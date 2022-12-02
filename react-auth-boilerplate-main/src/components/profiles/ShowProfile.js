@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { Avatar } from '@mui/material';
-import { Link, useParams, useNavigate } from "react-router-dom";
-import { profileShow, profileDelete, profileUpdate} from "../../api/profile";
+import { useParams } from "react-router-dom";
+import { profileShow,  profileUpdate} from "../../api/profile";
 import UpdateProfile from './UpdateProfile';
 import { Container } from 'react-bootstrap';
-import LoadingScreen from '../shared/LoadingScreen';
+// import LoadingScreen from '../shared/LoadingScreen';
 import ProfileForm from '../shared/ProfileForm';
 
 const ShowProfile = ({ user, msgAlert }) =>{
     
     const [profile, setProfile] = useState({})
     const [isUpdateShown, setIsUpdateShown] = useState(false)
-    const [updated, setUpdated] = useState(false)
-    const [deleted, setDeleted] = useState(false)
+  
     const { id } = useParams()
-    const navigate = useNavigate()
+   
 
     useEffect(() => {
         profileShow(user, id)
@@ -23,16 +22,13 @@ const ShowProfile = ({ user, msgAlert }) =>{
             console.log(profile)
             
             
+            
         })
         .catch((error) => {
-            // msgAlert({
-            //     heading: 'Failure',
-            //     message: 'Show Profile Failure' + error,
-            //     variant: 'danger'
-            // })
+           
         })
         
-    }, [updated])
+    }, [id, user])
 
     const toggleShowUpdate = (e) => {
         setIsUpdateShown(prevUpdateShown => !prevUpdateShown)
@@ -54,7 +50,7 @@ const ShowProfile = ({ user, msgAlert }) =>{
                 message: 'Updating Profile',
                 variant: 'success'
             })
-            console.log("from profileUpdate", profile)
+            
         })
         .catch((error) => {
             msgAlert({
@@ -65,27 +61,26 @@ const ShowProfile = ({ user, msgAlert }) =>{
         })
     }
 
-    const handleDeleteProfile = () => {
-        profileDelete(user, id)
-        .then(() => {
-            setDeleted(true)
-            msgAlert({
-                heading: 'Success',
-                message: 'Deleting a Profile',
-                variant: 'success'
-            })
+    // const handleDeleteProfile = () => {
+    //     profileDelete(user, id)
+    //     .then(() => {
+    //         setDeleted(true)
+    //         msgAlert({
+    //             heading: 'Success',
+    //             message: 'Deleting a Profile',
+    //             variant: 'success'
+    //         })
 
-        })
-        .catch((error) => {
-            msgAlert({
-                heading: 'Failure',
-                message: 'Deleting a Profile Failure' + error,
-                variant: 'danger'
-            })
-        })
-    }
+    //     })
+    //     .catch((error) => {
+    //         msgAlert({
+    //             heading: 'Failure',
+    //             message: 'Deleting a Profile Failure' + error,
+    //             variant: 'danger'
+    //         })
+    //     })
+    // }
 
-    if(deleted) navigate('/profiles')
 
     if(!profile){
         return <ProfileForm/>

@@ -27,13 +27,13 @@ const CreateProfile = (props) => {
 
             return { ...prevProfile, ...updatedProfile }
         })
-        console.log("from handleProfileChange", profile.bio)
+        
     }
 
     const handleCreateProfile = (e) => {
         e.preventDefault()
         
-        profileCreate(profile, user)
+        profileCreate(user, user._id, profile)
             .then(res => { navigate(`/profiles`)})
             .then(() => {
                 msgAlert({
@@ -41,14 +41,14 @@ const CreateProfile = (props) => {
                     message: 'Create Profile',
                     variant: 'success'
                 })
-                console.log("from profileCreate", profile)
+            
             })
             .catch((error) => {
-                msgAlert({
-                    heading: 'Failure',
-                    message: 'Create Profile Failure' + error,
-                    variant: 'danger'
-                })
+                // msgAlert({
+                //     heading: 'Failure',
+                //     message: 'Create Profile Failure' + error,
+                //     variant: 'danger'
+                // })
             })
             
     }

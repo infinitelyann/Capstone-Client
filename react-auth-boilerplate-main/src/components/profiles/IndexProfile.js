@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ShowProfile from "./ShowProfile";
+import CreateProfile from "./CreateProfile";
 import { userIndex } from "../../api/user";
-import { Card } from "react-bootstrap";
+import { Card, Container } from "react-bootstrap";
 import LoadingScreen from "../shared/LoadingScreen";
 
 
@@ -13,16 +14,16 @@ const IndexProfile = (props) =>{
         userIndex(user)
         .then(res => {
             setAllUsers(res.data.users)
-            console.log('this is the data', allUsers)
+            console.log(allUsers)
         })
         .catch((error) => {
             msgAlert({
                 heading: 'Failure',
-                message: 'Index User Failure' + error,
+                message:   error,
                 variant: 'danger'
             })
         })
-    }, [])
+    }, [ msgAlert, user])
 
     const userCards = allUsers.map(user => (
     
@@ -42,10 +43,19 @@ const IndexProfile = (props) =>{
     }
     return(
         <>
+        <Container>
+
         {userCards}
+        </Container>
         <div>
             <div className="container-md">
+             
+                <><CreateProfile user={user}/></>
+                {/* :
+                
                 <ShowProfile user={user}/>
+            } */}
+                
             </div>
         </div>
         </>

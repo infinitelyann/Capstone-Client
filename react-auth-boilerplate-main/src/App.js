@@ -12,11 +12,10 @@ import SignUp from "./components/auth/SignUp";
 import SignIn from "./components/auth/SignIn";
 import SignOut from "./components/auth/SignOut";
 import ChangePassword from "./components/auth/ChangePassword";
-import AvatarUpload from "./imageUpload";
 import PostIndex from "./components/posts/PostIndex";
 import PostCreate from "./components/posts/PostCreate";
 import PostShow from "./components/posts/PostShow";
-import CreateProfile from "./components/profiles/CreateProfile";
+// import CreateProfile from "./components/profiles/CreateProfile";
 import ShowProfile from "./components/profiles/ShowProfile";
 import IndexProfile from "./components/profiles/IndexProfile";
 
@@ -24,10 +23,9 @@ const App = () => {
   const [user, setUser] = useState(null);
   const [msgAlerts, setMsgAlerts] = useState([]);
 
-  //   console.log('user in app', user)
-  //   console.log('message alerts', msgAlerts)
+
   const clearUser = () => {
-    // console.log('clear user ran')
+ 
     setUser(null);
   };
 
@@ -69,10 +67,10 @@ const App = () => {
           path="/showprofile"
           element={<ShowProfile msgAlert={msgAlert} user={user} />}
         />
-         <Route
+         {/* <Route
           path="/profile/:id"
           element={<CreateProfile msgAlert={msgAlert} user={user} />}
-        />
+        /> */}
         <Route path="/" element={<Home msgAlert={msgAlert} user={user} />} />
         <Route
           path="/sign-up"

@@ -7,7 +7,7 @@ import messages from '../shared/AutoDismissAlert/messages'
 
 const SignOut = (props) => {
 	const { msgAlert, clearUser, user } = props
-    // console.log(props)
+  
 
     const navigate = useNavigate()
 
@@ -35,10 +35,10 @@ const SignOut = (props) => {
                     <h2>Are you sure you want to sign out?</h2>
                     <small>We hate to see you go...</small><br/>
                     <ButtonGroup>
-                        <Button variant='danger' onClick={onSignOut}>
+                        <Button onClick={onSignOut}>
                             Sign Out
                         </Button>
-                        <Button variant='warning' onClick={onCancel}>
+                        <Button  onClick={onCancel}>
                             Cancel
                         </Button>
                     </ButtonGroup>

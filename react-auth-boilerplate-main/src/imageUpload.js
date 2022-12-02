@@ -1,13 +1,13 @@
 import { createRef, useState } from 'react'
 import { Avatar, Button } from '@material-ui/core'
-import DeleteIcon from '@mui/icons-material/Delete'
-import UploadIcon from '@mui/icons-material/Upload'
-import { spacing } from '@material-ui/system'
-import { imageCreate } from './api/img'
+// import DeleteIcon from '@mui/icons-material/Delete'
+// import UploadIcon from '@mui/icons-material/Upload'
+// import { spacing } from '@material-ui/system'
+// import { imageCreate } from './api/img'
 
 
 const ProfilePicUpload = (props) =>{
-    const { user, profile, handleSubmit } = props
+    const {  profile, handleSubmit } = props
     
     const [image, _setImage] = useState()
     const inputFileRef = createRef()
@@ -20,7 +20,7 @@ const ProfilePicUpload = (props) =>{
             cleanup()
         }
         _setImage(newImage)
-        console.log()
+       
     }
     const handleOnChange = (event) => {
         const newImage = event.target.files[0]
@@ -28,8 +28,7 @@ const ProfilePicUpload = (props) =>{
             setImage(URL.createObjectURL(newImage))
         }
         props.imageUpload(event)
-        console.log(newImage, "hello")
-        console.log(profile)
+     
         
     }
     
@@ -52,14 +51,14 @@ const ProfilePicUpload = (props) =>{
         onChange={handleOnChange}
         /> 
         <label htmlFor='avatar-image-upload'>
-            <Button
+            <Button style={{backgroundColor:"#22A39F"}}
             className='btn btn-outline-dark'
             component="span"
             >
                 
                 {image ? 'Uploaded' : 'Upload'}
             </Button>
-            <Button onClick={handleSubmit}>post</Button>
+            <Button style={{backgroundColor:"#22A39F"}} onClick={handleSubmit}>post</Button>
         </label>
       
 
