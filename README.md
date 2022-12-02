@@ -19,6 +19,7 @@
  - Allow Edit Comment
  - Incorporate likes/dislikes
  - Username for profile and comments
+ - Hashtags, 'categories' 
 
 ## Technologies Used
 - ReactJs
