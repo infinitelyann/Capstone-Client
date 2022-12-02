@@ -17,7 +17,7 @@ const CreateComment = (props) => {
     const [comment, setComment] = useState(defaultComment)
 
     const handleChange = (e) => {
-        setCommentOwner(user.email)
+
         setComment(prevComment => {
             const name = e.target.name
             let value = e.target.value
@@ -55,6 +55,7 @@ const CreateComment = (props) => {
                 variant: 'danger'
             })
         })
+        console.log(comment)
        
     }
     if(user){

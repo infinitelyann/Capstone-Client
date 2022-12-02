@@ -122,7 +122,8 @@ const PostShow = ({ user, msgAlert}) =>{
                     <Card>
                     
                     <Card.Header><Avatar/>{owner}</Card.Header>
-                        {post.title}
+                         <Container><h3>{post.title}</h3></Container>
+                       
                     <Card.Body>
                         <Card.Text>
                        {post.text}

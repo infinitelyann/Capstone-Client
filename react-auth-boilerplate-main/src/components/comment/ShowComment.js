@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, Container } from "react-bootstrap";
 import { deleteComment, updateComment } from "../../api/comment";
 import { Avatar } from "@mui/material";
 
@@ -23,16 +23,17 @@ const ShowComment = (props) =>{
                     variant: 'danger'
                 })
             })
+            console.log(comment)
     }
 
 
 
 
    return(
-
+    <Container>
            <Card>
             <Avatar/>
-               <Card.Header>{ commentOwner }</Card.Header>
+            
                
                 <Card.Body>
                     <small>{ comment.text }</small><br/>
@@ -42,6 +43,8 @@ const ShowComment = (props) =>{
                     
                 </Card.Body>
            </Card>
+
+    </Container>
    )
 
         
