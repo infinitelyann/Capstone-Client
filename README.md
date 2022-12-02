@@ -1,6 +1,17 @@
 # Blogr
 <hr>
 ## Blog-Style Social Media FrontEnd
+<hr>
+## Development Journey
+ - I definitely became more comfortable with Express.js and Mongodb during this project
+ - This project has been the most difficult project of the cohort. I felt the most inhibited by my skills
+## Post-Submission Edits
+ - Figure Out Cloudinary
+ - Finsh User Profile
+ - Create Themes 
+     - Fonts
+     - Colors
+ - Allow Edit Comment
 
 ## Technologies Used
 - ReactJs
@@ -37,13 +48,6 @@
     - look at different 'tags' other people have used, and browse posts w/ that tag
 <hr>
 
-## Post-Submission Edits
- - Figure Out Cloudinary
- - Finsh User Profile
- - Create Themes 
-     - Fonts
-     - Colors
- - Allow Edit Comment
 
 ## Wireframes
 
