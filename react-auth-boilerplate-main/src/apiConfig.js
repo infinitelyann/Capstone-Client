@@ -1,7 +1,7 @@
 let apiUrl
 const apiUrls = {
     // YOU MUST CHANGE PRODUCTION URL WHEN DEPLOYING
-	production: 'https://blogr.fly.dev',
+	production: 'http://blograpi.fly.dev',
 	development: 'http://localhost:8000',
 }
 
