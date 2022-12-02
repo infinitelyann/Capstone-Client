@@ -1,11 +1,16 @@
 # Blogr
+
 <hr>
+
 ## Blog-Style Social Media FrontEnd
-<hr>
+
+<hr> 
+
 ## Development Journey
  - I definitely became more comfortable with Express.js and Mongodb during this project
  - This project has been the most difficult project of the cohort. I felt the most inhibited by my skills
-## Post-Submission Edits
+ 
+## Post-Bootcamp Edits
  - Figure Out Cloudinary
  - Finsh User Profile
  - Create Themes 
