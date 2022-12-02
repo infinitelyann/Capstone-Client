@@ -3,7 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import { createComment } from "../../../api/comment";
 
 const CommentForm = (props) =>{
-const {post, comment, handleChange, handleSubmit } = props
+const { comment, handleChange, handleSubmit } = props
     return(
        <>
         <Form >
@@ -11,13 +11,13 @@ const {post, comment, handleChange, handleSubmit } = props
             placeholder="text?"
             name='text' 
             id="text"
-            value={post.comments.text} 
+            value={comment.text} 
             onChange={handleChange} 
         >
 
         </Form.Control>
             
-            <Button onClick={handleSubmit} type="submit">Submit</Button>
+            <Button className="btn-outline-dark" onClick={handleSubmit}> submit comment</Button>
         </Form>
        </>
     )

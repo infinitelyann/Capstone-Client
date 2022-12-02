@@ -13,7 +13,7 @@ const CreateComment = (props) => {
 
     const defaultComment = {
         text: '',
-        owner: user,
+        owner: user
     }
     const [comment, setComment] = useState(defaultComment)
 
@@ -40,15 +40,15 @@ const CreateComment = (props) => {
         e.preventDefault()
         
         createComment(user, post._id, comment)
-        .then(res => { navigate(`/posts/${res.data.post._id}`)})
+        .then(()=> handleClose())
         .then(() => {
             msgAlert({
                 heading: 'Oh yeah!',
                 message: 'Great! The post loves it!',
                 variant: 'success'
             })
-            console.log(post.comment)
         })
+        .then(() => triggerRefresh())
         .catch((err) => {
             msgAlert({
                 heading: 'Oh No!',
@@ -56,14 +56,13 @@ const CreateComment = (props) => {
                 variant: 'danger'
             })
         })
-        
-        console.log("hello from createcomment", comment, post)
+        console.log(comment)
     }
     if(user){
         return (
           
                     <CommentForm 
-                        post={post}
+                        comment={comment}
                         handleChange={handleChange}
                         handleSubmit={handleSubmit}
                         commentOwner={commentOwner}

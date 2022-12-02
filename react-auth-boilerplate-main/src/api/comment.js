@@ -11,9 +11,9 @@ export const createComment = (user, postId, newComment) => {
 		url: `${apiUrl}/comments/${postId}`,
 		method: 'POST',
 		data: { comment: newComment },
-		// headers: {
-		// 	Authorization: `Token token=${user.token}`,
-		// },
+		headers: {
+			Authorization: `Token token=${user.token}`,
+		},
 	})
 
 }
@@ -39,5 +39,14 @@ export const deleteComment = (user, postId, commentId) => {
 		headers: {
 			Authorization: `Token token=${user.token}`,
 		}
+	})
+}
+
+//INDEX comment
+
+export const indexComment = (user, postId, commentId)=> {
+	return axios({
+		method: 'GET',
+		url: `${apiUrl}/comments/${postId}`,
 	})
 }

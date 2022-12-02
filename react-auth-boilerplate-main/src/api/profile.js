@@ -8,9 +8,9 @@ export const profileCreate = (data, user) => {
 		data: {
 			profile: data,
 		},
-		headers: {
-			Authorization: `Token token=${user.token}`,
-		},
+		// headers: {
+		// 	Authorization: `Token token=${user.token}`,
+		// },
 	})
 }
 
@@ -28,25 +28,25 @@ export const profileShow = (user, id) => {
 	})
 }
 
-export const profileUpdate = (data, user, id) => {
+export const profileUpdate = (user, userId, updatedProfile) => {
+    console.log('this is updatedProfile', updatedProfile)
 	return axios({
+		url: `${apiUrl}/profiles/${userId}/${updatedProfile._id}`,
 		method: 'PATCH',
-		url: apiUrl + '/profiles/' + id,
-		data: {
-			profile: data,
-		},
 		headers: {
 			Authorization: `Token token=${user.token}`,
 		},
+		data: { profile: updatedProfile }
 	})
 }
 
-export const petDelete = (user, id) => {
+export const profileDelete = (user, id) => {
 	return axios({
 		method: 'DELETE',
 		url: apiUrl + '/profiles/' + id,
 		headers: {
 			Authorization: `Token token=${user.token}`,
+			
 		},
 	})
 }

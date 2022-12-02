@@ -9,11 +9,6 @@ import CreateComment from '../comment/CreateComment'
 import ShowComment from '../comment/ShowComment'
 import PostUpdate from './PostUdpate'
 
-const cardContainerLayout = {
-    display: 'flex',
-    flexFlow: 'row wrap',
-    justifyContent: 'center'
-}
 
 const PostShow = ({ user, msgAlert}) =>{
   
@@ -23,7 +18,7 @@ const PostShow = ({ user, msgAlert}) =>{
     const [commentShow, setCommentShow] = useState(false)
     const [comment, setComment] = useState(null)
     const [deleted, setDeleted] = useState(false)
-    const [owner, setOwner] = useState(null)
+    
     const [updated, setUpdated] = useState(false)
 
     const { id } = useParams()
@@ -42,7 +37,7 @@ const PostShow = ({ user, msgAlert}) =>{
                 variant: 'danger'
             })
         })
-        console.log(post)
+        console.log(post.comments)
         
     }, [updated])
 
@@ -84,11 +79,11 @@ const PostShow = ({ user, msgAlert}) =>{
         postDelete(user, id)
         .then(() => {
             setDeleted(true)
-            msgAlert({
-                heading: 'Success',
-                message: 'Deleting a Post',
-                variant: 'success'
-            })
+            // msgAlert({
+            //     heading: 'Success',
+            //     message: 'Deleting a Post',
+            //     variant: 'success'
+            // })
 
         })
         .catch((error) => {
@@ -99,6 +94,27 @@ const PostShow = ({ user, msgAlert}) =>{
             })
         })
     }
+    let commentCards
+    
+        if(post && comment){
+            if(post.comments.length > 0){
+                commentCards = post.comments.map(comment =>(
+            
+                    <ShowComment
+                       key={comment._id}
+                       msgAlert={msgAlert}
+                       user={user}
+                       post={post}
+                       comment={comment}
+                       triggerRefresh={() => setUpdated(prev => !prev)}/> 
+                   ))
+
+            }
+
+        }
+        
+    
+    
 
 
     if (deleted) navigate('/posts')
@@ -114,11 +130,7 @@ const PostShow = ({ user, msgAlert}) =>{
                 <Card.Body>
                    {post.text}
                     <Card.Text>
-                       {/* {comment &&
-
-                        {comment}
-                       }
-                      */}
+                      
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer>
@@ -128,7 +140,7 @@ const PostShow = ({ user, msgAlert}) =>{
                     <>log in to comment and post</>
                     : 
                     <>
-                    <small onClick={toggleShowComment} className="btn btn-outline-dark" >comment</small>
+                    <small onClick={toggleShowComment} className="btn btn-outline-dark" >see comments</small>
                     
                     
                     {comment && (
@@ -145,26 +157,29 @@ const PostShow = ({ user, msgAlert}) =>{
                     <ExpandMoreIcon style={{float: "right"}}/>
                     
                     
-                   {user === post.owner ?
-                    <div>
-                    <button className="btn btn-outline-dark" onClick={toggleShowUpdate}>update</button>
-				{isUpdateShown && (
-					<PostUpdate
-						post={post}
-						handleChange={handleChange}
-						handleUpdatePost={handleUpdatePost}
-					/>
-				)}
+                   { 
+                    post.owner && user && post.owner._id === user._id ?
+                       <div>
+                       <button className="btn btn-outline-dark" onClick={toggleShowUpdate}>update</button>
+                   {isUpdateShown && (
+                       <PostUpdate
+                           post={post}
+                           handleChange={handleChange}
+                           handleUpdatePost={handleUpdatePost}
+                       />
+                   )}
+                      
+                      
+                       <button onClick={handleDeletePost}className="btn btn-outline-dark" >delete</button>
+                       </div>
                    
-                   
-                    <button onClick={handleDeletePost}className="btn btn-outline-dark" >delete</button>
-                    </div>
-                    :
-                    null
-                }
-                    </>
+                       
+                       :
+                        null
 
-                    
+                   }
+
+                    </>
                 }
                 
               
@@ -172,15 +187,16 @@ const PostShow = ({ user, msgAlert}) =>{
          
                 </Card>
                 
+                {commentCards}
                 
                 
-                     <ShowComment
-                    
+                    {/* <ShowComment
+                    key={comment._id}
                     msgAlert={msgAlert}
                     user={user}
                     post={post}
-                    comment={post.comments}
-                    triggerRefresh={() => setUpdated(prev => !prev)}/> 
+                    comment={comment}
+                    triggerRefresh={() => setUpdated(prev => !prev)}/>   */}
             
                 
             </Container>

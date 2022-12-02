@@ -66,11 +66,11 @@ const App = () => {
           element={<IndexProfile msgAlert={msgAlert} user={user} />}
         />
         <Route
-          path="/profiles/:id"
+          path="/showprofile"
           element={<ShowProfile msgAlert={msgAlert} user={user} />}
         />
          <Route
-          path="/editprofile"
+          path="/profile/:id"
           element={<CreateProfile msgAlert={msgAlert} user={user} />}
         />
         <Route path="/" element={<Home msgAlert={msgAlert} user={user} />} />

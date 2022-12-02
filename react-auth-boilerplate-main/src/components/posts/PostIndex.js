@@ -42,8 +42,23 @@ const PostIndex = ({ user, msgAlert }) => {
             <Typography variant="body2">{post.text}</Typography>     
             </CardContent>
             <Container>
-
+        {
+            user === post.owner ?
+            <>
+            <Typography sx={{ fontSize: 14, float: "right"}} color="text.secondary" gutterBottom>by you</Typography>
+            </>
+            : 
+          
+            <>
             <Typography sx={{ fontSize: 14, float: "right"}} color="text.secondary" gutterBottom>by @{post.owner.email }</Typography>
+            </>
+            
+            
+        }
+        
+
+    
+
 
             
                     <Link  to={ `/posts/${post._id}` }>see more</Link>

@@ -25,23 +25,34 @@ const IndexProfile = (props) =>{
     }, [])
 
     const userCards = allUsers.map(user => (
+    
+
         <Card key={ user._id}>
             <Card.Header>
                 {user.email}
-            </Card.Header>
+                </Card.Header>
+               
+                <>{user.profile.bio}</>
+
         </Card>
+        
     ))
     if(!allUsers){
         return <LoadingScreen/>
     }
-
     return(
+        <>
+        {userCards}
         <div>
             <div className="container-md">
                 <ShowProfile user={user}/>
             </div>
         </div>
+        </>
     )
+
+    // return(
+    // )
 }
 
 export default IndexProfile

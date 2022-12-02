@@ -1,11 +1,13 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import { deleteComment } from "../../api/comment";
 
 const ShowComment = (props) =>{
     const { comment, post, user, msgAlert, triggerRefresh} = props
 
     const destroyComment = () => {
+        console.log(comment)
+        console.log(post)
         deleteComment(user, post._id, comment._id)
             .then(() => {
                 msgAlert({
@@ -23,24 +25,24 @@ const ShowComment = (props) =>{
             })
     }
 
-   
 
-    if(!comment){
-        return
-            <>no comments yet</>
-            
+
+
+   return(
+
+           <Card>
+               <Card.Header>{ comment._id }{ comment.owner.email }</Card.Header>
+               
+                <Card.Body>
+                    <small>{ comment.text }</small><br/>
+                   
+                    <Button onClick={() => destroyComment()}>delete</Button>
+                    
+                </Card.Body>
+           </Card>
+   )
+
         
-
-    }
-    return(
-            <>
-            <h1>
-
-                { post.comments[1].text }
-            </h1>
-            </>
-    )
-
 }
 
 export default ShowComment

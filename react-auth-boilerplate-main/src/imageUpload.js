@@ -29,7 +29,8 @@ const ProfilePicUpload = (props) =>{
         }
         props.imageUpload(event)
         console.log(newImage, "hello")
-        console.log(user.img)
+        console.log(profile)
+        
     }
     
     return(
@@ -40,13 +41,14 @@ const ProfilePicUpload = (props) =>{
           style={{ width: "110px", borderRadius: "50%", height: "100px"}}
           />
         <input
-        name="img"
-        // value={user.img }
-        ref={inputFileRef}
-        accept="image/*"
-        hidden
-        id="avatar-image-upload"
         type="file"
+        name="img"
+        id="img"
+        // value={ profile.img }
+        
+        // accept="image/*"
+        // hidden
+        // id="avatar-image-upload"
         onChange={handleOnChange}
         /> 
         <label htmlFor='avatar-image-upload'>

@@ -9,8 +9,10 @@ const CreateProfile = (props) => {
     const navigate = useNavigate()
 
     const defaultProfile = {
-        title: '',
-        text: ''
+        bio: '',
+        img: '',
+        owner: user,
+        
     }
 
     const [profile, setProfile] = useState(defaultProfile)
@@ -18,26 +20,28 @@ const CreateProfile = (props) => {
     const handleChange = (e) => {
      
         setProfile(prevProfile => {
-            const updatedTitle = e.target.title
+            const updatedName = e.target.name
             let updatedValue = e.target.value
      
-            const updatedProfile = { [updatedTitle]: updatedValue }
+            const updatedProfile = { [updatedName]: updatedValue }
 
             return { ...prevProfile, ...updatedProfile }
         })
+        console.log("from handleProfileChange", profile.bio)
     }
 
     const handleCreateProfile = (e) => {
         e.preventDefault()
         
         profileCreate(profile, user)
-            .then(res => { navigate(`/profiles/${res.data.profile.id}`)})
+            .then(res => { navigate(`/profiles`)})
             .then(() => {
                 msgAlert({
                     heading: 'Success',
                     message: 'Create Profile',
                     variant: 'success'
                 })
+                console.log("from profileCreate", profile)
             })
             .catch((error) => {
                 msgAlert({
@@ -46,6 +50,7 @@ const CreateProfile = (props) => {
                     variant: 'danger'
                 })
             })
+            
     }
 
     return (
