@@ -30,6 +30,7 @@ const CreateComment = (props) => {
             }
 
         })
+        setCommentOwner(user)
 
         
         

@@ -15,6 +15,7 @@ const ShowComment = (props) =>{
                   
                     variant: 'success'
                 })
+                console.log("this is the comment")
             })
             .then(() => triggerRefresh())
             .catch(() => {
@@ -23,7 +24,6 @@ const ShowComment = (props) =>{
                     variant: 'danger'
                 })
             })
-            console.log(comment)
     }
 
 
