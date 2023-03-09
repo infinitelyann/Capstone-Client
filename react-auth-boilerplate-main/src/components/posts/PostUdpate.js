@@ -1,8 +1,8 @@
 import React from "react";
 import { Form } from "react-bootstrap";
 
-const PostUpdate = (props)=>{
-    const { post, handleChange, handleUpdatePost } = props
+const PostUpdate = ({ post, handleChange, handleUpdatePost })=>{
+  
     return (
 		<>
         <Form>

@@ -3,15 +3,16 @@ import CommentForm from '../shared/forms/CommentForm'
 import { createComment } from '../../api/comment'
 
 
-const CreateComment = (props) => {
-    const { 
-        user, post,  handleClose, msgAlert, triggerRefresh
-    } = props
+
+const CreateComment = ({user, post,  handleClose, msgAlert, triggerRefresh}) => {
+
   
     const [commentOwner, setCommentOwner] = useState('')
 
     const defaultComment = {
         text: '',
+        likes: 0,
+        dislikes: 0,
         owner: user
     }
     const [comment, setComment] = useState(defaultComment)
