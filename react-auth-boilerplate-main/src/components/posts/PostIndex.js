@@ -4,8 +4,8 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import CommentIcon from '@mui/icons-material/Comment';
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import ForumIcon from "@mui/icons-material/Forum";
 import { Link } from "react-router-dom";
 import { postIndex } from "../../api/post";
 import LoadingScreen from "../shared/LoadingScreen";
@@ -14,7 +14,6 @@ import { Container } from "react-bootstrap";
 // import { style } from "@mui/system";
 
 const PostIndex = ({ user, msgAlert }) => {
-
   const [allPosts, setAllPosts] = useState([]);
 
   const [isHover, setIsHover] = useState(false);
@@ -68,49 +67,42 @@ const PostIndex = ({ user, msgAlert }) => {
           <Typography variant="body2">{post.text}</Typography>
         </CardContent>
         <Container>
-         { user && user.email === post.owner.email ? (
+          {user && user.email === post.owner.email ? (
             <>
-             <Typography
+              <Typography
                 sx={{ fontSize: 14, float: "right" }}
                 color="text.secondary"
                 gutterBottom
               >
-                
-              by you
+                by you
               </Typography>
-             
             </>
-          ) : ( 
+          ) : (
             <>
-               <Typography
+              <Typography
                 sx={{ fontSize: 14, float: "right" }}
                 color="text.secondary"
                 gutterBottom
-                >
+              >
                 by @{post.owner.email}
               </Typography>
-             
             </>
-
-          )
-          }
-         
-          
-
+          )}
+        </Container>
+        <Container>
           <Link
-            style={styles.linkStyle}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             to={`/posts/${post._id}`}
           >
-            <CommentIcon/>
+            <ForumIcon />
           </Link>
-        <KeyboardArrowUpIcon/>
-        {post.likes}
-        <KeyboardArrowDownIcon/>
-        {post.dislikes}
+          {post.comments.length}
+          <KeyboardArrowUpIcon style={{ color: "green" }} />
+          {post.likes}
+          <KeyboardArrowDownIcon style={{ color: "orange" }} />
+          {post.dislikes}
         </Container>
-      
       </Card>
     </div>
   ));

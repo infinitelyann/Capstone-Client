@@ -3,51 +3,43 @@ import { Button, Card, Container } from "react-bootstrap";
 import { deleteComment, updateComment } from "../../api/comment";
 import { Avatar } from "@mui/material";
 
-const ShowComment = (props) =>{
-    const { comment, post, user, msgAlert, triggerRefresh, commentOwner} = props
+const ShowComment = (props) => {
+  const { comment, post, user, msgAlert, triggerRefresh } = props;
 
-    const destroyComment = () => {
-     
-        deleteComment(user, post._id, comment._id)
-            .then(() => {
-                msgAlert({
-                    heading: 'deleted!',
-                  
-                    variant: 'success'
-                })
-                console.log("this is the comment")
-            })
-            .then(() => triggerRefresh())
-            .catch(() => {
-                msgAlert({
-                    heading: 'Oh no!',
-                    variant: 'danger'
-                })
-            })
-    }
+  const destroyComment = () => {
+    deleteComment(user, post._id, comment._id)
+      .then(() => {
+        msgAlert({
+          heading: "deleted!",
 
+          variant: "success",
+        });
+        console.log("this is the comment", comment.owner.email);
+      })
+      .then(() => triggerRefresh())
+      .catch(() => {
+        msgAlert({
+          heading: "Oh no!",
+          variant: "danger",
+        });
+      });
+  };
 
-
-
-   return(
+  return (
     <Container>
-           <Card>
-            <Avatar/>
-            
-               
-                <Card.Body>
-                    <small>{ comment.text }</small><br/>
-                    <small></small>
-                   
-                    <Button onClick={() => destroyComment()}>delete</Button>
-                    
-                </Card.Body>
-           </Card>
+      <Card>
+        <Avatar />
 
+        <Card.Body>
+          <small>{comment.text}</small>
+          <br />
+          <small>{user.email}</small>
+
+          <Button onClick={() => destroyComment()}>delete</Button>
+        </Card.Body>
+      </Card>
     </Container>
-   )
+  );
+};
 
-        
-}
-
-export default ShowComment
+export default ShowComment;
