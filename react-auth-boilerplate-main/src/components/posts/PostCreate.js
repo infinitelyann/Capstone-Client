@@ -10,8 +10,8 @@ const PostCreate = ({ user, msgAlert }) => {
     const defaultPost = {
         title: '',
         text: '',
-        likes: 0,
-        dislikes: 0,
+        likes: 2,
+        dislikes: -4,
         owner: user
     }
 

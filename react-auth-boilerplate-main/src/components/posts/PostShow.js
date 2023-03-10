@@ -8,6 +8,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CreateComment from '../comment/CreateComment'
 import ShowComment from '../comment/ShowComment'
 import PostUpdate from './PostUdpate'
+import PostLikes from "./PostLikes";
 import { Avatar } from '@mui/material'
 
 
@@ -29,6 +30,7 @@ const PostShow = ({ user, msgAlert}) =>{
         postShow(user, id)
         .then((res) => {
             setPost(res.data.post)
+            console.log(res.data.post)
             setOwner(post.owner.email)
             
         })
@@ -55,8 +57,8 @@ const PostShow = ({ user, msgAlert}) =>{
         setPost({...post, [event.target.name]: event.target.value})
     }
 
-    const handleUpdatePost = () => {
-        postUpdate(post, user, id)
+    const handleUpdatePost = (newPost = post) => {
+        postUpdate(newPost, user, id)
         .then(() => {
             msgAlert({
                 heading: 'Success',
@@ -150,9 +152,10 @@ const PostShow = ({ user, msgAlert}) =>{
                         handleClose={() => setCommentShow(false)}
                         />
                     )}
-                        <ExpandLessIcon style={{float: "right"}}/>
-                        <ExpandMoreIcon style={{float: "right"}}/>
-                        
+                          <PostLikes post={post}
+                    msgAlert={msgAlert}
+                    user={user}
+                    handleUpdatePost={handleUpdatePost}/>
                         
                        { 
                         post.owner && user && post.owner._id === user._id ?
@@ -178,7 +181,7 @@ const PostShow = ({ user, msgAlert}) =>{
     
                         </>
                     }
-                    
+                  
                   
                     </Card.Footer>
              

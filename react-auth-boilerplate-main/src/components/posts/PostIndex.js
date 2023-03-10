@@ -3,12 +3,14 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import CommentIcon from '@mui/icons-material/Comment';
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Link } from "react-router-dom";
 import { postIndex } from "../../api/post";
 import LoadingScreen from "../shared/LoadingScreen";
 import { Container } from "react-bootstrap";
-import PostLikes from "./PostLikes";
+
 // import { style } from "@mui/system";
 
 const PostIndex = ({ user, msgAlert }) => {
@@ -101,10 +103,14 @@ const PostIndex = ({ user, msgAlert }) => {
             onMouseLeave={handleMouseLeave}
             to={`/posts/${post._id}`}
           >
-            comments
+            <CommentIcon/>
           </Link>
+        <KeyboardArrowUpIcon/>
+        {post.likes}
+        <KeyboardArrowDownIcon/>
+        {post.dislikes}
         </Container>
-      <PostLikes post={post} user={user} msgAlert={msgAlert}/>
+      
       </Card>
     </div>
   ));

@@ -1,71 +1,88 @@
 import React, { useEffect, useState } from "react";
-import { postUpdate } from "../../api/post"
+import { postUpdate } from "../../api/post";
+import { Form } from "react-bootstrap";
 
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
-const PostLikes = ({user, post, msgAlert, id}) => {
+const LIKE_STATE = {
+  LIKE: 1,
+  UNSET: 0,
+  DISLIKE: -1,
+};
 
-    // const [likes, setLikes] = useState(0);
-    // const [dislikes, setDislikes] = useState(0);
-    
-    const handleLike = (e) => {
-        // setLikes({...post, [e.target.name]: e.target.value})
-        //   console.log(post)
-      };
-      
-      const handleDislike = (e) => {
-      
-        // setDislikes({...post, [e.target.name]: e.target.value})
-      }
-  
-
-    const handleUpdateLikes = () => {
-        postUpdate(post, user, id)
-        .then(() => {
-            msgAlert({
-                heading: 'Success',
-                message: 'voting',
-                variant: 'success'
-            })
-        })
-        .catch((error) => {
-            msgAlert({
-                heading: 'Failure',
-                message: 'Update Post Failure' + error,
-                variant: 'danger'
-            })
-        })
+const PostLikes = ({ user, post, handleUpdatePost }) => {
+  const [likes, setLikes] = useState(post.likes);
+  const [dislikes, setDislikes] = useState(post.dislikes);
+  const [likeState, setLikeState] = useState(LIKE_STATE.UNSET);
+  const handleLike = () => {
+    if (likeState === LIKE_STATE.LIKE) {
+      setLikes(likes - 1);
+      setLikeState(LIKE_STATE.UNSET);
+    } else if (likeState === LIKE_STATE.DISLIKE) {
+      setLikes(likes + 1);
+      setDislikes(dislikes + 1);
+      setLikeState(LIKE_STATE.LIKE);
+    } else {
+      setLikes(likes + 1);
+      setLikeState(LIKE_STATE.LIKE);
     }
-    return(
-        <div>
-           { user ? (
-            <>
-               <KeyboardArrowUpIcon
-               
-               name="likes"
-               id="likes"
-               value= { post.likes }
-                onClick={handleUpdateLikes} />
-               {post.likes}
-               <KeyboardArrowDownIcon 
-                name="dislikes"
-                id="dislikes"
-                value= { post.dislikes }
-               onClick={handleDislike} />
-               {post.dislikes}
-            </>
+  };
 
-           ) : (
-            <>
-            <KeyboardArrowUpIcon style={{ color: "green"}}/>
-            {post.likes}
-            <KeyboardArrowDownIcon style={{color: "red"}}/>
-            {post.dislikes}
-            </>
-           )}
-        </div>
-    )
-}
+  const handleDislike = () => {
+    if (likeState === LIKE_STATE.LIKE) {
+      setLikes(likes - 1);
+      setDislikes(dislikes - 1);
+      setLikeState(LIKE_STATE.DISLIKE);
+    } else if (likeState === LIKE_STATE.DISLIKE) {
+      setDislikes(dislikes + 1);
+      setLikeState(LIKE_STATE.UNSET);
+    } else {
+      setDislikes(dislikes - 1);
+      setLikeState(LIKE_STATE.DISLIKE);
+    }
+  };
 
-export default PostLikes
+  useEffect(() => {
+    console.log("hello");
+    handleUpdatePost({
+      ...post,
+      likes,
+      dislikes,
+    });
+  }, [likeState]);
+
+  return (
+    <div>
+      {user ? (
+        <>
+          <div>
+            <KeyboardArrowUpIcon
+              name="likes"
+              id="likes"
+              value={likes}
+              onClick={handleLike}
+            />
+            {likes}
+            <KeyboardArrowDownIcon
+              name="dislikes"
+              id="dislikes"
+              value={dislikes}
+              onClick={handleDislike}
+            />
+            {dislikes}
+          </div>
+        </>
+      ) : (
+        <>
+          <KeyboardArrowUpIcon style={{ color: "green" }} />
+          {likes}
+          <KeyboardArrowDownIcon style={{ color: "red" }} />
+          {dislikes}
+        </>
+      )}
+    </div>
+  );
+};
+
+export default PostLikes;
