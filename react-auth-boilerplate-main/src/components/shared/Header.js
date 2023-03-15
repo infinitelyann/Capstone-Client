@@ -1,49 +1,48 @@
-
 import React, { Fragment } from "react";
 import {
-	AppBar,
-	Toolbar,
-	CssBaseline,
-	Typography,
-	makeStyles } from '@material-ui/core'
-	
+  AppBar,
+  Toolbar,
+  CssBaseline,
+  Typography,
+  makeStyles,
+} from "@material-ui/core";
+
 import { Link } from "react-router-dom";
-	
+import { padding } from "@mui/system";
+
 const linkStyle = {
-	textDecoration: "none",
-	color: "white",
-	fontSize: "20px",
-	padding: "5px"
-  
+  textDecoration: "none",
+  color: "#F1DBBF",
+  fontSize: "20px",
+  padding: "5px",
 };
 const useStyles = makeStyles((theme) => ({
-	navlinks: {
-	  marginLeft: theme.spacing(10),
-	  display: "flex",
-	},
-   logo: {
-	  flexGrow: "1",
-	  cursor: "pointer",
-	},
-	
-  }));
+  navlinks: {
+    marginLeft: theme.spacing(10),
+    display: "flex",
+  },
+  logo: {
+    flexGrow: "1",
+    cursor: "pointer",
+  },
+}));
 
 const authenticatedOptions = (
-	<>
-    <Link to="change-password" style={linkStyle} >
-      Change Password
+  <>
+    <Link to="change-password" style={linkStyle}>
+      change Password
     </Link>
 
-    <Link to="sign-out" style={linkStyle} >
-      Sign Out
+    <Link to="sign-out" style={linkStyle}>
+      sign Out
     </Link>
 
     <Link to="/create" style={linkStyle}>
-      Write
+      write
     </Link>
 
     <Link to="/profiles" style={linkStyle}>
-      Profiles
+      profiles
     </Link>
   </>
 );
@@ -51,53 +50,61 @@ const authenticatedOptions = (
 const unauthenticatedOptions = (
   <>
     <Link to="sign-up" style={linkStyle}>
-      Sign Up
+      sign up
     </Link>
 
     <Link to="sign-in" style={linkStyle}>
-      Sign In
+      sign in
     </Link>
   </>
 );
 
 const alwaysOptions = (
   <>
-    <Link to="/" style={linkStyle}>
-      Home
-    </Link>
-
     <Link to="/posts" style={linkStyle}>
-      Posts
+      posts
     </Link>
   </>
 );
-  
-  function Header(props) {
-	const { user } = props
-	const classes = useStyles();
-  
-	return (
-		<>
-		<style>{'body{background-color: #F3EFE0}'}</style>
-	  <AppBar style={{backgroundColor: '#434242'}} position="static">
-		<CssBaseline />
-		<Toolbar>
-		  <Typography variant="h4" className={classes.logo} style={{color: '#22A39F'}}>
-			blogr
-		  </Typography>
-			<div className={classes.navlinks}>
-		{/* {user && (
+
+function Header(props) {
+  const { user } = props;
+  const classes = useStyles();
+
+  return (
+    <>
+      <style>
+        {"body{background-image: url(https://i.imgur.com/2gZX4Db.jpg)}"}
+      </style>
+      <AppBar
+        style={{ backgroundColor: "#698269", padding: "2%" }}
+        position="static"
+      >
+        <CssBaseline />
+        <Toolbar>
+          <Typography
+            variant="h4"
+            className={classes.logo}
+            id="blogr"
+            style={{
+              color: "#E7B10A",
+              textDecoration: "bold",
+              fontSize: "4em",
+            }}
+          >
+            blogr
+          </Typography>
+          <div className={classes.navlinks}>
+            {/* {user && (
 		  <span style={linkStyle}>Welcome, {user.email}</span>
 		)} */}
-		{alwaysOptions}
-		{user ? authenticatedOptions : unauthenticatedOptions}
-			  
-			</div>
-		</Toolbar>
-	  </AppBar>
-		</>
-	);
-  }
-  
-  export default Header;
-  
+            {alwaysOptions}
+            {user ? authenticatedOptions : unauthenticatedOptions}
+          </div>
+        </Toolbar>
+      </AppBar>
+    </>
+  );
+}
+
+export default Header;

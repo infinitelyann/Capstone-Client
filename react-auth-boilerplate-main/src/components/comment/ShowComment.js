@@ -33,7 +33,7 @@ const ShowComment = (props) => {
         <Card.Body>
           <small>{comment.text}</small>
           <br />
-          <small>{user.email}</small>
+          <small>{comment.owner}</small>
 
           <Button onClick={() => destroyComment()}>delete</Button>
         </Card.Body>

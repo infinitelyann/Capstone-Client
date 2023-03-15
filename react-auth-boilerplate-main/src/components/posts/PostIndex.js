@@ -27,9 +27,9 @@ const PostIndex = ({ user, msgAlert }) => {
 
   const styles = {
     app: {
-      borderStyle: "solid",
-      borderColor: "",
-      borderWidth: "1px",
+      // borderStyle: "solid",
+      // borderColor: "",
+      // borderWidth: "1px",
       margin: "10px",
     },
     row: {
@@ -65,32 +65,32 @@ const PostIndex = ({ user, msgAlert }) => {
             {post.title}
           </Typography>
           <Typography variant="body2">{post.text}</Typography>
-        </CardContent>
-        <Container>
-          {user && user.email === post.owner.email ? (
-            <>
-              <Typography
-                sx={{ fontSize: 14, float: "right" }}
-                color="text.secondary"
-                gutterBottom
-              >
-                by you
-              </Typography>
-            </>
-          ) : (
-            <>
-              <Typography
-                sx={{ fontSize: 14, float: "right" }}
-                color="text.secondary"
-                gutterBottom
-              >
-                by @{post.owner.email}
-              </Typography>
-            </>
-          )}
-        </Container>
-        <Container>
+          <Container style={{ paddingBottom: "1em" }}>
+            {user && user.email === post.owner.email ? (
+              <>
+                <Typography
+                  sx={{ fontSize: 14, float: "right" }}
+                  color="text.secondary"
+                  gutterBottom
+                >
+                  you
+                </Typography>
+              </>
+            ) : (
+              <>
+                <Typography
+                  sx={{ fontSize: 14, float: "right" }}
+                  color="text.secondary"
+                  gutterBottom
+                >
+                  {post.owner.email}
+                </Typography>
+              </>
+            )}
+          </Container>
+          <hr />
           <Link
+            style={{ color: "#CA4E79" }}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             to={`/posts/${post._id}`}
@@ -102,7 +102,7 @@ const PostIndex = ({ user, msgAlert }) => {
           {post.likes}
           <KeyboardArrowDownIcon style={{ color: "orange" }} />
           {post.dislikes}
-        </Container>
+        </CardContent>
       </Card>
     </div>
   ));
