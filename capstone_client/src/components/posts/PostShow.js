@@ -83,7 +83,7 @@ const PostShow = ({ user, msgAlert }) => {
           key={comment._id}
           msgAlert={msgAlert}
           user={user}
-          owner={comment.owner.email}
+          owner={comment.owner}
           post={post}
           comment={comment}
           triggerRefresh={() => setUpdated((prev) => !prev)}
