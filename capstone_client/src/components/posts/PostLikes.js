@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { postUpdate } from "../../api/post";
-import { Form } from "react-bootstrap";
 
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
